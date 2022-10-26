@@ -1,6 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
+  flags: { FAST_DEV: true },
   siteMetadata: {
     title: `SpotiFeed`,
     siteUrl: `https://www.yourdomain.tld`
@@ -9,7 +10,11 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: ["gatsby-plugin-sitemap", "gatsby-plugin-mdx", {
+  plugins: [
+    'gatsby-plugin-postcss',
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-mdx",
+    {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "pages",
