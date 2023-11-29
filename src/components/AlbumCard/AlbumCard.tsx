@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import { Image, MediaType } from '../types/types'
+import React from 'react'
+import { Image, MediaType } from '../../types/types'
 
 const getDaysSinceRelease = (releaseDate: string): string => {
   const todaysDate = new Date()
@@ -19,8 +19,7 @@ const getDaysSinceRelease = (releaseDate: string): string => {
   }
 }
 
-const AlbumCard: FC<MediaType> = ({ title, artists, releaseDate, images }: MediaType) => {
-
+export function AlbumCard ({ title, artists, releaseDate, images }: MediaType) {
   return (
     <>
         <div data-component='AlbumCard-background' className='flex bg-black mx-6 mt-4 mb-6 h-64 rounded-2xl'>
@@ -34,5 +33,3 @@ const AlbumCard: FC<MediaType> = ({ title, artists, releaseDate, images }: Media
     </>
   )
 }
-
-export default AlbumCard

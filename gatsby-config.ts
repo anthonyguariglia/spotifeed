@@ -1,4 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
+require("dotenv").config({
+  path: `.env.dev`,
+})
 
 const config: GatsbyConfig = {
   flags: { FAST_DEV: true },

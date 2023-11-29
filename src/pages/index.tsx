@@ -1,27 +1,30 @@
-import * as React from "react"
+import React, { useState, useReducer } from "react"
 import type { HeadFC } from "gatsby"
-import AlbumCard from "../components/AlbumCard"
 import { mockAlbum, mockImage, mockPlaylist } from "../utils/mocks"
-import MediaFeed from "../components/MediaFeed"
-import FeedHeader from "../components/FeedHeader"
-import Anchor from "../components/Anchor"
-import NavBar from "../components/NavBar"
+import { defaultContext, UserContext } from "../utils/context"
+import { reducer } from "../utils/reducer"
+import { Anchor, FeedHeader, Header, MediaFeed, NavBar } from "../components"
 
 const IndexPage = () => {
+  const [ state, dispatch ] = useReducer(reducer, defaultContext)
+
   return (
-    <div className='flex flex-row bg-black w-full'>
-      <div className='flex flex-col w-1/5' >
-        <Anchor />
-        <NavBar items={[ mockPlaylist, mockPlaylist, mockPlaylist ]}/>
+    <UserContext.Provider value={{ state, dispatch }}>
+      <Header />
+      <div className='flex flex-row bg-black w-full'>
+        <div className='flex flex-col w-1/5' >
+          <Anchor />
+          <NavBar items={[ mockPlaylist, mockPlaylist, mockPlaylist ]}/>
+        </div>
+        <div className='flex flex-col w-full mr-8' >
+          <FeedHeader heading='Most Recent Tracks' />
+          <MediaFeed albums={[ mockAlbum, mockAlbum, mockAlbum, mockAlbum, mockAlbum, mockAlbum, mockAlbum ]} />
+        </div>
       </div>
-      <div className='flex flex-col w-full mr-8' >
-        <FeedHeader heading='Most Recent Tracks' />
-        <MediaFeed albums={[ mockAlbum, mockAlbum, mockAlbum, mockAlbum, mockAlbum, mockAlbum, mockAlbum ]} />
-      </div>
-    </div>
+    </UserContext.Provider>
   )
 }
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>SpotiFeed</title>

@@ -26,5 +26,21 @@ export type MediaType = {
 }
 
 export type PlaylistType = {
-  name: string
+  readonly name: string
+}
+
+export type Action = {
+  readonly type: string
+  readonly payload: any
+}
+
+export type ContextType = {
+  readonly token: string
+  readonly albums: readonly MediaType[]
+  readonly playlists: readonly PlaylistType[]
+}
+
+export type GenericModalProps = {
+  readonly isOpen: boolean
+  readonly setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
