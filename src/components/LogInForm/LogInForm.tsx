@@ -1,28 +1,14 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react'
-import { Resolver, useForm } from 'react-hook-form'
-import logIn from '../../api/logIn'
-import { UserContext } from '../../utils/context';
-
-type FormValues = {
-  username: string;
-  password: string;
-}
+import React from 'react'
+import { FieldErrors, UseFormHandleSubmit, UseFormRegister, useForm } from 'react-hook-form'
+import { FormValues } from './LogInFormContent'
 
 type LogInFormProps = {
-  readonly onSuccess: (val: boolean) => void
+  onSubmit: any
+  register: UseFormRegister<FormValues>
+  errors: FieldErrors<FormValues>
 }
 
-export function LogInForm ({ onSuccess }: LogInFormProps) {
-  const [ showErrorMessage, setShowErrorMessage ] = useState(false)
-  const { state, dispatch } = useContext(UserContext)
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<FormValues>()
-
-  const onSubmit = handleSubmit((data) => logIn({ email: data.username, password: data.password, state, dispatch }))
-
-  useEffect(() => {
-    !!state.token && setTimeout(() => onSuccess(false), 250)
-  }, [state.token])
+export function LogInForm ({ onSubmit, register, errors }: LogInFormProps ) {
 
   return (
     <form onSubmit={onSubmit} id='LoginForm'>

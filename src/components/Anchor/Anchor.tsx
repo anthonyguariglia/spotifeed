@@ -1,5 +1,5 @@
 import React, { useContext, useReducer, useState } from "react"
-import { LogInForm } from "../LogInForm/LogInForm"
+import { LogInFormContent } from "../LogInForm/LogInFormContent"
 import { Button, Modal } from ".."
 import { UserContext, defaultContext } from "../../utils/context"
 import { reducer } from "../../utils/reducer"
@@ -23,7 +23,7 @@ export function Anchor () {
   return (
     <div className='bg-neutral-900 rounded-2xl m-4 p-3 flex justify-center' >
       <Button {...buttonProps} onClick={() => setLoginModalIsOpen(!loginModalIsOpen)} />
-      <Modal isOpen={loginModalIsOpen} setIsOpen={setLoginModalIsOpen} title='Log In' cta={loginCta} content={<LogInForm onSuccess={setLoginModalIsOpen} />} />
+      <Modal isOpen={loginModalIsOpen} setIsOpen={setLoginModalIsOpen} title='Log In' cta={loginCta} content={<LogInFormContent onSuccess={setLoginModalIsOpen} />} />
     </div>
   )
 }
