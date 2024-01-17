@@ -18,11 +18,11 @@ export function Anchor () {
 
   const onSubmit = () => true
 
-  const loginCta = <Button buttonText="Log In" type='submit' form="LoginForm" onClick={onSubmit} />
+  const loginCta = <Button buttonText="Log In" type='submit' form="LoginForm" onClickCta={onSubmit} />
 
   return (
     <div className='bg-neutral-900 rounded-2xl m-4 p-3 flex justify-center' >
-      <Button {...buttonProps} onClick={() => setLoginModalIsOpen(!loginModalIsOpen)} />
+      <Button {...buttonProps} onClickCta={() => setLoginModalIsOpen(!loginModalIsOpen)} />
       <Modal isOpen={loginModalIsOpen} setIsOpen={setLoginModalIsOpen} title='Log In' cta={loginCta} content={<LogInFormContent onSuccess={setLoginModalIsOpen} />} />
     </div>
   )

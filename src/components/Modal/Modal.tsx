@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useRef, MutableRefObject } from 'react'
 import classNames from 'classnames'
-import { useOnClickOutside } from '../../helpers/useOnClickOutside'
+import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { Button } from '..'
 
 export type ModalProps = {
@@ -95,7 +95,7 @@ export const Modal = ({ isOpen, setIsOpen, content, title = '', headerBackground
     'hidden duration-300 transition ease-in-out ': !isOpen
   })
 
-  const closeButton = <Button onClick={() => setIsOpen && setIsOpen(!isOpen)} buttonText='Close'/>
+  const closeButton = <Button onClickCta={() => setIsOpen && setIsOpen(!isOpen)} buttonText='Close'/>
 
   return (
     <div className={classes} id={`${title.replace(' ', '-')}-modalWrapper`} ref={ref} >

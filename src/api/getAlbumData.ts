@@ -1,15 +1,12 @@
 import axios from 'axios'
 
-const getAlbumData = (token: string) => {
-  const apiUrl = process.env.PRD_URL
+const apiUrl: string = process.env.environment === 'development' ? 'http://localhost:4000' : 'https://pure-harbor-08948.herokuapp.com'
 
+const getAlbumData = () => {
   return axios({
     method: 'GET',
-    url: `${apiUrl}/getData`,
-    headers: {
-      token: `Authorization - Bearer ${token}`
-    }
-  })
+    url: `${apiUrl}/get-data`
+  }).then(resp => resp.data)
 }
 
 export default getAlbumData

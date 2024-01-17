@@ -19,7 +19,8 @@ export const mockAlbum: MediaType = {
   title: 'My New Album',
   artists: [ mockArtist ],
   releaseDate: '8/27/2022',
-  images: [ mockImage ]
+  images: [ mockImage ],
+  type: 'album'
 }
 
 export const mockPlaylist: PlaylistType = {

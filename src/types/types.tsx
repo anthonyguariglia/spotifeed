@@ -23,6 +23,7 @@ export type MediaType = {
   readonly images: readonly Image[]
   readonly title: string
   readonly releaseDate: string
+  readonly type: string
 }
 
 export type PlaylistType = {

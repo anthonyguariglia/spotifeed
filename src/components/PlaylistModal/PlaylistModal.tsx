@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { GenericModalProps } from '../../types/types'
-import { useOnClickOutside } from '../../helpers/useOnClickOutside'
+import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { Modal } from '..'
 
 export const PlaylistModal = ({ isOpen, setIsOpen }: GenericModalProps) => {

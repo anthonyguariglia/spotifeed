@@ -12,7 +12,7 @@ type ContextProps = {
   readonly dispatch: React.Dispatch<Action>
 }
 
-const state = {}
+const state = defaultContext
 const dispatch = () => {}
 
 const contextProps: ContextProps = { state, dispatch }

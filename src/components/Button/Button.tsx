@@ -1,7 +1,7 @@
-import React, { useEffect } from "react"
+import React, { useCallback, useEffect } from "react"
 
 type ButtonProps = {
-  readonly onClick?: () => void
+  readonly onClickCta?: () => void
   readonly buttonText: string
   readonly backgroundColor?: string
   readonly border?: boolean
@@ -11,11 +11,15 @@ type ButtonProps = {
   readonly form?: string
 }
 
-export function Button ({ onClick, buttonText, backgroundColor, border, borderColor, textColor, type = 'button', form = '' }: ButtonProps) {
+export function Button ({ onClickCta, buttonText, backgroundColor, border, borderColor, textColor, type = 'button', form = '' }: ButtonProps) {
 
   const borderClass = border ? `border ${borderColor}` : null 
 
+  const handler = () => {
+    onClickCta && onClickCta()
+  }
+
   return (
-    <button form={form} className={`rounded-md py-2 w-full ${backgroundColor} ${borderClass} ${textColor}`} onClick={() => onClick && onClick()} type={type}>{buttonText}</button>
+    <button form={form} className={`rounded-md py-2 w-full ${backgroundColor} ${borderClass} ${textColor}`} onClick={handler} type={type}>{buttonText}</button>
   )
 }
